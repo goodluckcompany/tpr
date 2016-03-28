@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+﻿#include "mainwindow.h"
 #include "ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -29,6 +29,24 @@ Answer * MainWindow::calculateBayesianDecision(Alternative **_alternatives)
         return new Answer(u2,alt[0]->getDecision());
     }
 }
+
+Answer * MainWindow::calculateMinMaxDecision(Alternative **_alternatives)
+{
+    Alternative ** alt = _alternatives;
+    double u1,u2; //Функция полезности при принятии решения d1 и d2 соответствено;
+    u1 = alt[1]->getValuation();
+    u2 = alt[2]->getValuation();
+
+    if(u1 >= u2)
+    {
+        return new Answer(u1,alt[1]->getDecision());
+    }
+    else
+    {
+        return new Answer(u2,alt[2]->getDecision());
+    }
+}
+
 
 void MainWindow::calculate()
 {
@@ -64,9 +82,14 @@ void MainWindow::calculate()
 
     //Произодим расчет Байесовского решения
     Answer * BayesianDecision = calculateBayesianDecision(alernatives);
+    //Производим расчет Минимксного решения
+    Answer * MinMaxDecision = calculateMinMaxDecision(alernatives);
+
 
 
     //Заполняем поле вывода
     ui->plainTextEdit->setPlainText(trUtf8("Было принято решение: ")+BayesianDecision->getDecision());
     ui->plainTextEdit->appendPlainText(trUtf8("Полезность решения: ")+QString::number(BayesianDecision->getUsefulness()));
+    ui->plainTextEdit->setPlainText(trUtf8("Было принято решение: ")+MinMaxDecision->getDecision());
+    ui->plainTextEdit->appendPlainText(trUtf8("Полезность решения: ")+QString::number(MinMaxDecision->getUsefulness()));
 }

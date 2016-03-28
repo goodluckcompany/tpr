@@ -1,4 +1,4 @@
-#ifndef MAINWINDOW_H
+﻿#ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
 #include <QMainWindow>
@@ -23,7 +23,7 @@ private:
     Answer * calculateBayesianDecision(Alternative ** _alternatives);
 
     //Алтернатива Баесовскому решению, выбрать лучшее решение при худших обстаятельствах
-    Answer * calculateAlternativeDecision(Alternative * _alternatives);
+    Answer * calculateMinMaxDecision(Alternative ** _alternatives);
 
     //Полезность точной информации
     Answer * calculateUsefulnessAccurateInformation(Alternative * _alternatives);
