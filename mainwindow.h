@@ -26,7 +26,7 @@ private:
     Answer * calculateMinMaxDecision(Alternative ** _alternatives);
 
     //Полезность точной информации
-    Answer * calculateUsefulnessAccurateInformation(Alternative * _alternatives);
+    Answer * calculateUsefulnessAccurateInformation(Alternative ** _alternatives);
 private slots:
     void calculate();
 };
