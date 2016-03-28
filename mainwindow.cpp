@@ -52,8 +52,8 @@ void MainWindow::calculate()
 {
     /*Массива вероятностей события*/
     double probability[2];
-    probability[0] = 0.9;// рынок растёт
-    probability[1] = 1 - probability[0];//рынок падает
+      probability[0]  =  ui->lineEdit->text().toDouble(); // вероятность роста рынка
+      probability[1] = 1 - probability[0]; // вероятность падения рынка
 
     /*Массив возможных решений*/
     QString decisions[2];
@@ -63,9 +63,10 @@ void MainWindow::calculate()
     /*Массива ценности каждой альтернативы*/
     double valuation[4];
 
-    valuation[0] = 5000;//ценость первой альтернативы
-    valuation[1] = 1000;//ценость второй альтернативы
-    valuation[2] = -5000;//ценость третьей альтернативы
+    valuation[0] =  ui->lineEdit1->text().toDouble();//ценность первой альтернативы
+    valuation[1] =  ui->lineEdit2->text().toDouble();//ценность второй альтернативы
+    valuation[2] =  ui->lineEdit3->text().toDouble();//ценность третей альтернативы
+
 
     /*Массив альтернатив*/
     Alternative * alernatives[3];
@@ -90,6 +91,6 @@ void MainWindow::calculate()
     //Заполняем поле вывода
     ui->plainTextEdit->setPlainText(trUtf8("Было принято решение: ")+BayesianDecision->getDecision());
     ui->plainTextEdit->appendPlainText(trUtf8("Полезность решения: ")+QString::number(BayesianDecision->getUsefulness()));
-    ui->plainTextEdit->setPlainText(trUtf8("Было принято решение: ")+MinMaxDecision->getDecision());
-    ui->plainTextEdit->appendPlainText(trUtf8("Полезность решения: ")+QString::number(MinMaxDecision->getUsefulness()));
+    ui->plainTextEdit2->setPlainText(trUtf8("Было принято решение: ")+MinMaxDecision->getDecision());
+    ui->plainTextEdit2->appendPlainText(trUtf8("Полезность решения: ")+QString::number(MinMaxDecision->getUsefulness()));
 }
