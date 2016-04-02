@@ -29,6 +29,9 @@ private:
     Answer * calculateUsefulnessAccurateInformation(Alternative ** _alternatives);
 private slots:
     void calculate();
+    void setTest1();
+    void setTest2();
+    void setTest3();
 };
 
 #endif // MAINWINDOW_H
